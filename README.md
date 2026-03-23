@@ -3,19 +3,21 @@
 
 ![Powered by Extension.js][powered-image]
 
-# React Content Example
+# Smurf-Detector Browser Extension
 
-What you’ll see: a small React UI injected into any page, isolated in a Shadow DOM so site styles don’t interfere.
+An extension to judge a players smurf-likelihood.
 
-How it works: a content script mounts a React component inside a Shadow DOM and applies scoped styles.
+This extension does not aim to harm any players. Be aware that the calculated score and the final judgement is only a calculation based on hypotheses. Please do not be toxic to potential smurfs and don't hate on them, rather hate the game.
 
 ## Installation
 
 ```bash
-npx extension@latest create <project-name> --template content-react
-cd <project-name>
+git clone https://github.com/leontm-dev/smurf-detector.git
+cd smurf-detector
 npm install
 ```
+
+Afterwards you have to add the extension to your browser.
 
 ## Commands
 
