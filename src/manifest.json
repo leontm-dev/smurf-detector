@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json.schemastore.org/chrome-manifest.json",
+  "chromium:manifest_version": 3,
+  "firefox:manifest_version": 2,
+  "version": "0.1.0",
+  "name": "Smurf Detector",
+  "description": "A chrome extension to help you decide if players are smurfing.",
+  "icons": {
+    "16": "images/icon.png",
+    "32": "images/icon.png",
+    "48": "images/icon.png",
+    "64": "images/icon.png",
+    "128": "images/icon.png"
+  },
+  "background": {
+    "chromium:service_worker": "background.ts",
+    "firefox:scripts": ["background.ts"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://tracker.gg/valorant/profile/riot/*"],
+      "js": ["./content/scripts.tsx"]
+    }
+  ],
+  "author": "Leon Anneken"
+}
