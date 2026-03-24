@@ -171,15 +171,20 @@ export default function ContentApp() {
           Loading / Error
         </div>
         <div className="rounded-lg text-xs w-full bg-green-700 py-1 px-2">
-          Unlikely
+          Unlikely ({"< 40%"})
         </div>
         <div className="rounded-lg text-xs w-full bg-orange-500 py-1 px-2">
-          Could be
+          Could be ({"< 70%"})
         </div>
         <div className="rounded-lg text-xs w-full bg-red-700 py-1 px-2">
-          Pretty likely
+          Pretty likely ({"> 70%"})
         </div>
       </div>
+      <p className="text-white/70 text-sm">
+        Results of this are no guarantee that a player is truly smurfing. People
+        can always have a good game and sometimes they just shoot better. Please
+        don't hate on other players, hate on the game.
+      </p>
       <div
         className={
           "w-full rounded-lg p-4 flex flex-col gap-4 shadow-md shadow-white" +
@@ -194,10 +199,16 @@ export default function ContentApp() {
       >
         <div className="flex flex-col gap-0">
           <h1 className="text-xl font-bold">Smurf-Detector Report</h1>
-          <p className="text-white/70 text-sm">
-            Results of this are no guarantee that a player is truly smurfing.
-            People can always have a good game and sometimes they just shoot
-            better. Please don't hate on other players, hate on the game.
+          <p>
+            Open an issue on{" "}
+            <a
+              href="https://github.com/leontm-dev/smurf-detector/issues"
+              target="_blank"
+              className="underline decoration-white"
+            >
+              GitHub
+            </a>{" "}
+            if you have suggestions or feedback. ❤️
           </p>
         </div>
         <div className="flex flex-row p-2 rounded-lg border border-dashed items-center justify-between gap-2 flex-wrap">
