@@ -165,43 +165,70 @@ export default function ContentApp() {
   }, []);
 
   return (
-    <div
-      className={
-        "w-full rounded-lg p-4 flex flex-col gap-4 shadow-md shadow-white" +
-        (smurfLikelihood === 0
-          ? " bg-gray-500"
-          : smurfLikelihood < 0.4
-            ? " bg-green-500"
-            : smurfLikelihood < 0.7
-              ? " bg-orange-500"
-              : " bg-red-500")
-      }
-    >
-      <div className="flex flex-col gap-0">
-        <h1 className="text-xl font-bold">Smurf-Detector Report</h1>
-        <p className="text-white/70 text-sm">
-          Results of this are no guarantee that a player is truly smurfing.
-          People can always have a good game and sometimes they just shoot
-          better. Please don't hate on other players, hate on the game.
-        </p>
+    <div className="flex flex-col gap-4 w-full">
+      <div className="flex flex-row items-center gap-2 w-full">
+        <div className="rounded-lg text-xs w-full bg-gray-500 py-1 px-2">
+          Loading / Error
+        </div>
+        <div className="rounded-lg text-xs w-full bg-green-700 py-1 px-2">
+          Unlikely ({"< 40%"})
+        </div>
+        <div className="rounded-lg text-xs w-full bg-orange-500 py-1 px-2">
+          Could be ({"< 70%"})
+        </div>
+        <div className="rounded-lg text-xs w-full bg-red-700 py-1 px-2">
+          Pretty likely ({"> 70%"})
+        </div>
       </div>
-      <div className="flex flex-row p-2 rounded-lg border border-dashed items-center justify-between gap-2 flex-wrap">
-        <span className="italic">Likelihood of player being a smurf:</span>
-        <span className="font-extrabold text-xl">
-          {loading
-            ? "Loading..."
-            : `${Number(smurfLikelihood * 100).toFixed(2)}%`}
-        </span>
-      </div>
-      <div className="flex flex-row items-center gap-2 flex-wrap">
-        {badges.map((badge) => (
-          <div
-            key={badge}
-            className="border border-dashed border-white py-1 px-2 rounded-lg text-xs"
-          >
-            {badge}
-          </div>
-        ))}
+      <p className="text-white/70 text-sm">
+        Results of this are no guarantee that a player is truly smurfing. People
+        can always have a good game and sometimes they just shoot better. Please
+        don't hate on other players, hate on the game.
+      </p>
+      <div
+        className={
+          "w-full rounded-lg p-4 flex flex-col gap-4 shadow-md shadow-white" +
+          (smurfLikelihood === 0
+            ? " bg-gray-500"
+            : smurfLikelihood < 0.4
+              ? " bg-green-700"
+              : smurfLikelihood < 0.7
+                ? " bg-orange-500"
+                : " bg-red-700")
+        }
+      >
+        <div className="flex flex-col gap-0">
+          <h1 className="text-xl font-bold">Smurf-Detector Report</h1>
+          <p>
+            Open an issue on{" "}
+            <a
+              href="https://github.com/leontm-dev/smurf-detector/issues"
+              target="_blank"
+              className="underline decoration-white"
+            >
+              GitHub
+            </a>{" "}
+            if you have suggestions or feedback. ❤️
+          </p>
+        </div>
+        <div className="flex flex-row p-2 rounded-lg border border-dashed items-center justify-between gap-2 flex-wrap">
+          <span className="italic">Likelihood of player being a smurf:</span>
+          <span className="font-extrabold text-xl">
+            {loading
+              ? "Loading..."
+              : `${Number(smurfLikelihood * 100).toFixed(2)}%`}
+          </span>
+        </div>
+        <div className="flex flex-row items-center gap-2 flex-wrap">
+          {badges.map((badge) => (
+            <div
+              key={badge}
+              className="border border-dashed border-white py-1 px-2 rounded-lg text-xs"
+            >
+              {badge}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
