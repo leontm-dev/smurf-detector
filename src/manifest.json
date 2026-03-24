@@ -2,7 +2,8 @@
   "$schema": "https://json.schemastore.org/chrome-manifest.json",
   "chromium:manifest_version": 3,
   "firefox:manifest_version": 2,
-  "version": "0.1.0",
+  "manifest_version": 3,
+  "version": "0.1.1",
   "name": "Smurf Detector",
   "description": "A chrome extension to help you decide if players are smurfing.",
   "icons": {
