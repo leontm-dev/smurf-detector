@@ -204,6 +204,7 @@ export default function ContentApp() {
             <a
               href="https://github.com/leontm-dev/smurf-detector/issues"
               target="_blank"
+              rel="noopener noreferrer"
               className="underline decoration-white"
             >
               GitHub
