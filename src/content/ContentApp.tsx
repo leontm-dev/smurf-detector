@@ -5,6 +5,7 @@ export default function ContentApp() {
   function extractValueFromElement(
     element: Element | null,
     customSplitter?: string,
+    deletionKey?: string,
   ): number | null {
     if (!element) return null;
 
@@ -17,13 +18,19 @@ export default function ContentApp() {
     } else {
       countString = element.innerHTML.trim();
     }
+    if (deletionKey) {
+      countString = countString.replaceAll(deletionKey, "");
+    }
     const parsedCount = parseFloat(countString);
     if (isNaN(parsedCount)) return null;
 
     return parsedCount;
   }
 
-  async function findStatWithLabel(label: string): Promise<number | null> {
+  async function findStatWithLabel(
+    label: string,
+    deletionKey?: string,
+  ): Promise<number | null> {
     let statCount: number | null = null;
 
     await Promise.all(
@@ -38,6 +45,8 @@ export default function ContentApp() {
 
             statCount = extractValueFromElement(
               element.childNodes[1] as Element,
+              undefined,
+              deletionKey,
             );
           } else if (element.classList.length === 2) {
             const labelElement = element.childNodes[0] as Element | undefined;
@@ -46,6 +55,8 @@ export default function ContentApp() {
 
             statCount = extractValueFromElement(
               element.childNodes[1] as Element,
+              undefined,
+              deletionKey,
             );
           } else {
             const labelElement = element.childNodes[0].childNodes[3]
@@ -56,6 +67,8 @@ export default function ContentApp() {
             statCount = extractValueFromElement(
               element.childNodes[0].childNodes[3].childNodes[2]
                 .childNodes[0] as Element,
+              undefined,
+              deletionKey,
             );
           }
         }),
@@ -75,7 +88,7 @@ export default function ContentApp() {
         "h",
       );
 
-      const level = await findStatWithLabel("Level");
+      const level = await findStatWithLabel("Level", ".");
       const damagePerRound = await findStatWithLabel("Damage/Round");
       const kd = await findStatWithLabel("K/D Ratio");
       const headshotRate = await findStatWithLabel("Headshot %");
